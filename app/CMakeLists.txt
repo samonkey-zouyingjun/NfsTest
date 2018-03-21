@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.4.1)
 
 #设置NDK编译变量
 set(CMAKE_CXX_FLAGS
-    "${CMAKE_CXX_FLAGS} -std=c++0x -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-all -fPIE")
+    "${CMAKE_CXX_FLAGS} -std=c++11 -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-all -fPIE")
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -pie")
 
 #-------------------------------------------------------------
@@ -18,9 +18,9 @@ set(libfolder "${CMAKE_SOURCE_DIR}/src/main/jniLibs/${ANDROID_ABI}")
 #添加编译库来自jnihelp
 add_library( nfs_client
              SHARED
-             src/main/cpp/jni_helper/JniHelper.c
-             src/main/cpp/jni_helper/JavaClassCache.c
-             src/main/cpp/nfs_client/NfsClient.c )
+             src/main/cpp/jni_helper/JniHelper.cpp
+             src/main/cpp/jni_helper/JavaClassCache.cpp
+             src/main/cpp/nfs_client/NfsClient.cpp )
 #log lib
 find_library( log-lib
               log )
