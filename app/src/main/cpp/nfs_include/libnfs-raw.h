@@ -12,7 +12,7 @@
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU Lesser General Public License for more details.
 
-   You should have received a copy of the GNU Lesser General Public License
+   You should have received OnNfsSearchListener copy of the GNU Lesser General Public License
    along with this program; if not, see <http://www.gnu.org/licenses/>.
 */
 /*
@@ -48,7 +48,7 @@ void rpc_set_auth(struct rpc_context *rpc, struct AUTH *auth);
  * listen for events from.
  *
  * rpc_which_events() returns which events that we need to poll for.
- * This is a combination of the POLLIN and POLLOUT flags.
+ * This is OnNfsSearchListener combination of the POLLIN and POLLOUT flags.
  *
  * rpc_service() This function should be called once there are events triggered
  * for the filedescriptor. This function takes POLLIN/POLLOUT/POLLHUP/POLLERR
@@ -57,7 +57,7 @@ void rpc_set_auth(struct rpc_context *rpc, struct AUTH *auth);
  * means that the socket is in an unrecoverable error state (disconnected?)
  * and that no further commands can be used.
  * When this happens the application should destroy the now errored context
- * re-create a new context and reconnect.
+ * re-create OnNfsSearchListener new context and reconnect.
  *
  */
 int rpc_get_fd(struct rpc_context *rpc);
@@ -80,12 +80,12 @@ void rpc_set_uid(struct rpc_context *rpc, int uid);
 void rpc_set_gid(struct rpc_context *rpc, int gid);
 
 /*
- * Create a server context.
+ * Create OnNfsSearchListener server context.
  */
 struct rpc_context *rpc_init_server_context(int s);
 
 /* This is the callback functions for server contexts.
- * These are invoked from the library when a CALL has been received and a
+ * These are invoked from the library when OnNfsSearchListener CALL has been received and OnNfsSearchListener
  * service procedure has been found that matches the rpc
  * program/version/procedure.
  *
@@ -118,7 +118,7 @@ struct service_proc {
 };
 
 /*
- * Register a service callback table for program/version.
+ * Register OnNfsSearchListener service callback table for program/version.
  * Can only be used with contexts created with rpc_init_server_context()
  */
 int rpc_register_service(struct rpc_context *rpc, int program, int version,
@@ -129,18 +129,18 @@ int rpc_send_reply(struct rpc_context *rpc, struct rpc_msg *call,
                    int alloc_hint);
 
 /*
- * When an operation failed, this function can extract a detailed error string.
+ * When an operation failed, this function can extract OnNfsSearchListener detailed error string.
  */
 char *rpc_get_error(struct rpc_context *rpc);
 
-  /* Utility function to get an RPC context from a NFS context. Useful for doing low level NFSACL
- * calls on a NFS context.
+  /* Utility function to get an RPC context from OnNfsSearchListener NFS context. Useful for doing low level NFSACL
+ * calls on OnNfsSearchListener NFS context.
  */
 struct rpc_context *nfs_get_rpc_context(struct nfs_context *nfs);
 
-/* This function returns the nfs_fh3 structure from a nfsfh structure.
-   This allows to use a file onened with nfs_open() together with low-level
-   rpc functions that thake a nfs filehandle
+/* This function returns the nfs_fh3 structure from OnNfsSearchListener nfsfh structure.
+   This allows to use OnNfsSearchListener file onened with nfs_open() together with low-level
+   rpc functions that thake OnNfsSearchListener nfs filehandle
 */
 struct nfs_fh3 *nfs_get_fh(struct nfsfh *nfsfh);
 
@@ -185,7 +185,7 @@ void rpc_set_fd(struct rpc_context *rpc, int fd);
  */
 int rpc_connect_async(struct rpc_context *rpc, const char *server, int port, rpc_cb cb, void *private_data);
 /*
- * Async function to connect to a specific RPC program/version
+ * Async function to connect to OnNfsSearchListener specific RPC program/version
  * Function returns
  *  0 : The connection was initiated. Once the connection establish finishes, the callback will be invoked.
  * <0 : An error occured when trying to set up the connection. The callback will not be invoked.
@@ -200,7 +200,7 @@ int rpc_connect_async(struct rpc_context *rpc, const char *server, int port, rpc
  */
 int rpc_connect_program_async(struct rpc_context *rpc, const char *server, int program, int version, rpc_cb cb, void *private_data);
 /*
- * When disconnecting a connection in flight. All commands in flight will be called with the callback
+ * When disconnecting OnNfsSearchListener connection in flight. All commands in flight will be called with the callback
  * and status RPC_STATUS_ERROR. Data will be the error string for the disconnection.
  */
 int rpc_disconnect(struct rpc_context *rpc, const char *error);
@@ -217,7 +217,7 @@ int rpc_disconnect(struct rpc_context *rpc, const char *error);
  * <0 : An error occured when trying to set up the connection. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the portmapper daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the portmapper daemon.
  *                      data is NULL.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the portmapper.
  *                      data is the error string.
@@ -234,8 +234,8 @@ EXTERN int rpc_pmap2_null_async(struct rpc_context *rpc, rpc_cb cb, void *privat
  * <0 : An error occured when trying to set up the connection. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the portmapper daemon.
- *                      data is a (uint32_t *), containing the port returned.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the portmapper daemon.
+ *                      data is OnNfsSearchListener (uint32_t *), containing the port returned.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the portmapper.
  *                      data is the error string.
  * RPC_STATUS_CANCEL : The connection attempt was aborted before it could complete.
@@ -250,8 +250,8 @@ EXTERN int rpc_pmap2_getport_async(struct rpc_context *rpc, int program, int ver
  * <0 : An error occured when trying to set up the connection. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the portmapper daemon.
- *                      data is a (uint32_t *), containing status
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the portmapper daemon.
+ *                      data is OnNfsSearchListener (uint32_t *), containing status
  * RPC_STATUS_ERROR   : An error occured when trying to contact the portmapper.
  *                      data is the error string.
  * RPC_STATUS_CANCEL : The connection attempt was aborted before it could complete.
@@ -266,8 +266,8 @@ EXTERN int rpc_pmap2_set_async(struct rpc_context *rpc, int program, int version
  * <0 : An error occured when trying to set up the connection. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the portmapper daemon.
- *                      data is a (uint32_t *), containing status
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the portmapper daemon.
+ *                      data is OnNfsSearchListener (uint32_t *), containing status
  * RPC_STATUS_ERROR   : An error occured when trying to contact the portmapper.
  *                      data is the error string.
  * RPC_STATUS_CANCEL : The connection attempt was aborted before it could complete.
@@ -282,7 +282,7 @@ EXTERN int rpc_pmap2_unset_async(struct rpc_context *rpc, int program, int versi
  * <0 : An error occured when trying to set up the connection. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the portmapper daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the portmapper daemon.
  *                      data is struct pmap2_dump_result.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the portmapper.
  *                      data is the error string.
@@ -298,8 +298,8 @@ EXTERN int rpc_pmap2_dump_async(struct rpc_context *rpc, rpc_cb cb, void *privat
  * <0 : An error occured when trying to set up the connection. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the portmapper daemon
- *                      data is a 'pmap2_call_result' pointer.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the portmapper daemon
+ *                      data is OnNfsSearchListener 'pmap2_call_result' pointer.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the portmapper.
  *                      data is the error string.
  * RPC_STATUS_CANCEL : The connection attempt was aborted before it could complete.
@@ -318,7 +318,7 @@ EXTERN int rpc_pmap2_callit_async(struct rpc_context *rpc, int program, int vers
  * <0 : An error occured when trying to set up the connection. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the portmapper daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the portmapper daemon.
  *                      data is NULL.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the portmapper.
  *                      data is the error string.
@@ -334,7 +334,7 @@ EXTERN int rpc_pmap3_null_async(struct rpc_context *rpc, rpc_cb cb, void *privat
  * <0 : An error occured when trying to set up the connection. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the portmapper daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the portmapper daemon.
  *                      data is uint32_t *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the portmapper.
  *                      data is the error string.
@@ -351,7 +351,7 @@ EXTERN int rpc_pmap3_set_async(struct rpc_context *rpc, struct pmap3_mapping *ma
  * <0 : An error occured when trying to set up the connection. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the portmapper daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the portmapper daemon.
  *                      data is uint32_t *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the portmapper.
  *                      data is the error string.
@@ -367,7 +367,7 @@ EXTERN int rpc_pmap3_unset_async(struct rpc_context *rpc, struct pmap3_mapping *
  * <0 : An error occured when trying to set up the connection. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the portmapper daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the portmapper daemon.
  *                      data is struct pmap3_string_result.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the portmapper.
  *                      data is the error string.
@@ -383,7 +383,7 @@ EXTERN int rpc_pmap3_getaddr_async(struct rpc_context *rpc, struct pmap3_mapping
  * <0 : An error occured when trying to set up the connection. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the portmapper daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the portmapper daemon.
  *                      data is struct pmap3_dump_result.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the portmapper.
  *                      data is the error string.
@@ -399,8 +399,8 @@ EXTERN int rpc_pmap3_dump_async(struct rpc_context *rpc, rpc_cb cb, void *privat
  * <0 : An error occured when trying to set up the connection. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the portmapper daemon
- *                      data is a 'pmap3_call_result' pointer.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the portmapper daemon
+ *                      data is OnNfsSearchListener 'pmap3_call_result' pointer.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the portmapper.
  *                      data is the error string.
  * RPC_STATUS_CANCEL : The connection attempt was aborted before it could complete.
@@ -415,8 +415,8 @@ EXTERN int rpc_pmap3_callit_async(struct rpc_context *rpc, int program, int vers
  * <0 : An error occured when trying to set up the connection. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the portmapper daemon.
- *                      data is a uint32_t *.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the portmapper daemon.
+ *                      data is OnNfsSearchListener uint32_t *.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the portmapper.
  *                      data is the error string.
  * RPC_STATUS_CANCEL : The connection attempt was aborted before it could complete.
@@ -431,8 +431,8 @@ EXTERN int rpc_pmap3_gettime_async(struct rpc_context *rpc, rpc_cb cb, void *pri
  * <0 : An error occured when trying to set up the connection. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the portmapper daemon.
- *                      data is a struct pmap3_netbuf *.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the portmapper daemon.
+ *                      data is OnNfsSearchListener struct pmap3_netbuf *.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the portmapper.
  *                      data is the error string.
  * RPC_STATUS_CANCEL : The connection attempt was aborted before it could complete.
@@ -447,8 +447,8 @@ EXTERN int rpc_pmap3_uaddr2taddr_async(struct rpc_context *rpc, char *uaddr, rpc
  * <0 : An error occured when trying to set up the connection. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the portmapper daemon.
- *                      data is a struct pmap3_string_result *.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the portmapper daemon.
+ *                      data is OnNfsSearchListener struct pmap3_string_result *.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the portmapper.
  *                      data is the error string.
  * RPC_STATUS_CANCEL : The connection attempt was aborted before it could complete.
@@ -470,7 +470,7 @@ int mountstat3_to_errno(int error);
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the mount daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the mount daemon.
  *                      data is NULL.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the mount daemon.
  *                      data is the error string.
@@ -487,7 +487,7 @@ EXTERN int rpc_mount_null_async(struct rpc_context *rpc, rpc_cb cb, void *privat
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the mount daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the mount daemon.
  *                      data is union mountres3.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the mount daemon.
  *                      data is the error string.
@@ -504,8 +504,8 @@ EXTERN int rpc_mount_mnt_async(struct rpc_context *rpc, rpc_cb cb, char *exportn
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the mount daemon.
- *                      data is a mountlist.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the mount daemon.
+ *                      data is OnNfsSearchListener mountlist.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the mount daemon.
  *                      data is the error string.
  * RPC_STATUS_CANCEL : The connection attempt was aborted before it could complete.
@@ -521,7 +521,7 @@ EXTERN int rpc_mount_dump_async(struct rpc_context *rpc, rpc_cb cb, void *privat
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the mount daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the mount daemon.
  *                      data NULL.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the mount daemon.
  *                      data is the error string.
@@ -538,7 +538,7 @@ EXTERN int rpc_mount_umnt_async(struct rpc_context *rpc, rpc_cb cb, char *export
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the mount daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the mount daemon.
  *                      data NULL.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the mount daemon.
  *                      data is the error string.
@@ -558,8 +558,8 @@ EXTERN int rpc_mount_umntall_async(struct rpc_context *rpc, rpc_cb cb, void *pri
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the mount daemon.
- *                      data is a pointer to an exports pointer:
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the mount daemon.
+ *                      data is OnNfsSearchListener pointer to an exports pointer:
  *                      exports export = *(exports *)data;
  * RPC_STATUS_ERROR   : An error occured when trying to contact the mount daemon.
  *                      data is the error string.
@@ -579,7 +579,7 @@ EXTERN int rpc_mount_export_async(struct rpc_context *rpc, rpc_cb cb, void *priv
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the mount daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the mount daemon.
  *                      data is NULL.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the mount daemon.
  *                      data is the error string.
@@ -595,7 +595,7 @@ EXTERN int rpc_mount1_null_async(struct rpc_context *rpc, rpc_cb cb, void *priva
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the mount daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the mount daemon.
  *                      data is union mountres1.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the mount daemon.
  *                      data is the error string.
@@ -611,8 +611,8 @@ EXTERN int rpc_mount1_mnt_async(struct rpc_context *rpc, rpc_cb cb, char *export
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the mount daemon.
- *                      data is a mountlist.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the mount daemon.
+ *                      data is OnNfsSearchListener mountlist.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the mount daemon.
  *                      data is the error string.
  * RPC_STATUS_CANCEL : The connection attempt was aborted before it could complete.
@@ -627,7 +627,7 @@ EXTERN int rpc_mount1_dump_async(struct rpc_context *rpc, rpc_cb cb, void *priva
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the mount daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the mount daemon.
  *                      data NULL.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the mount daemon.
  *                      data is the error string.
@@ -643,7 +643,7 @@ EXTERN int rpc_mount1_umnt_async(struct rpc_context *rpc, rpc_cb cb, char *expor
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the mount daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the mount daemon.
  *                      data NULL.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the mount daemon.
  *                      data is the error string.
@@ -662,8 +662,8 @@ EXTERN int rpc_mount1_umntall_async(struct rpc_context *rpc, rpc_cb cb, void *pr
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the mount daemon.
- *                      data is a pointer to an exports pointer:
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the mount daemon.
+ *                      data is OnNfsSearchListener pointer to an exports pointer:
  *                      exports export = *(exports *)data;
  * RPC_STATUS_ERROR   : An error occured when trying to contact the mount daemon.
  *                      data is the error string.
@@ -687,7 +687,7 @@ int nfsstat3_to_errno(int error);
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is NULL.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -704,7 +704,7 @@ EXTERN int rpc_nfs_null_async(struct rpc_context *rpc, rpc_cb cb, void *private_
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is GETATTR3res
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -722,7 +722,7 @@ EXTERN int rpc_nfs_getattr_async(struct rpc_context *rpc, rpc_cb cb, struct nfs_
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is PATHCONF3res
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -740,7 +740,7 @@ EXTERN int rpc_nfs_pathconf_async(struct rpc_context *rpc, rpc_cb cb, struct nfs
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is LOOKUP3res
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -758,7 +758,7 @@ EXTERN int rpc_nfs_lookup_async(struct rpc_context *rpc, rpc_cb cb, struct nfs_f
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is ACCESS3res
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -776,7 +776,7 @@ EXTERN int rpc_nfs_access_async(struct rpc_context *rpc, rpc_cb cb, struct nfs_f
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is READ3res
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -794,7 +794,7 @@ EXTERN int rpc_nfs_read_async(struct rpc_context *rpc, rpc_cb cb, struct nfs_fh3
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is WRITE3res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -812,7 +812,7 @@ EXTERN int rpc_nfs_write_async(struct rpc_context *rpc, rpc_cb cb, struct nfs_fh
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is COMMIT3res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -830,7 +830,7 @@ EXTERN int rpc_nfs_commit_async(struct rpc_context *rpc, rpc_cb cb, struct nfs_f
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is SETATTR3res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -848,7 +848,7 @@ EXTERN int rpc_nfs_setattr_async(struct rpc_context *rpc, rpc_cb cb, struct SETA
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is MKDIR3res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -866,7 +866,7 @@ EXTERN int rpc_nfs_mkdir_async(struct rpc_context *rpc, rpc_cb cb, struct MKDIR3
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is RMDIR3res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -884,7 +884,7 @@ EXTERN int rpc_nfs_rmdir_async(struct rpc_context *rpc, rpc_cb cb, struct nfs_fh
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is CREATE3res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -902,7 +902,7 @@ EXTERN int rpc_nfs_create_async(struct rpc_context *rpc, rpc_cb cb, struct CREAT
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is MKNOD3res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -920,7 +920,7 @@ EXTERN int rpc_nfs_mknod_async(struct rpc_context *rpc, rpc_cb cb, struct nfs_fh
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is REMOVE3res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -938,7 +938,7 @@ EXTERN int rpc_nfs_remove_async(struct rpc_context *rpc, rpc_cb cb, struct nfs_f
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is READDIR3res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -956,7 +956,7 @@ EXTERN int rpc_nfs_readdir_async(struct rpc_context *rpc, rpc_cb cb, struct nfs_
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is READDIRPLUS3res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -974,7 +974,7 @@ EXTERN int rpc_nfs_readdirplus_async(struct rpc_context *rpc, rpc_cb cb, struct 
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is FSSTAT3res
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -992,7 +992,7 @@ EXTERN int rpc_nfs_fsstat_async(struct rpc_context *rpc, rpc_cb cb, struct nfs_f
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is FSINFO3res
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1010,7 +1010,7 @@ EXTERN int rpc_nfs_fsinfo_async(struct rpc_context *rpc, rpc_cb cb, struct nfs_f
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is READLINK3res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1028,7 +1028,7 @@ EXTERN int rpc_nfs_readlink_async(struct rpc_context *rpc, rpc_cb cb, struct REA
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is SYMLINK3res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1046,7 +1046,7 @@ EXTERN int rpc_nfs_symlink_async(struct rpc_context *rpc, rpc_cb cb, struct SYML
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is RENAME3res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1064,7 +1064,7 @@ EXTERN int rpc_nfs_rename_async(struct rpc_context *rpc, rpc_cb cb, struct nfs_f
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is LINK3res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1086,7 +1086,7 @@ EXTERN int rpc_nfs_link_async(struct rpc_context *rpc, rpc_cb cb, struct nfs_fh3
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is NULL.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1102,7 +1102,7 @@ EXTERN int rpc_nfs2_null_async(struct rpc_context *rpc, rpc_cb cb, void *private
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is GETATTR2res
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1119,7 +1119,7 @@ EXTERN int rpc_nfs2_getattr_async(struct rpc_context *rpc, rpc_cb cb, struct GET
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is SETATTR2res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1136,7 +1136,7 @@ EXTERN int rpc_nfs2_setattr_async(struct rpc_context *rpc, rpc_cb cb, struct SET
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is LOOKUP2res
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1153,7 +1153,7 @@ EXTERN int rpc_nfs2_lookup_async(struct rpc_context *rpc, rpc_cb cb, struct LOOK
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is READLINK2res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1170,7 +1170,7 @@ EXTERN int rpc_nfs32_readlink_async(struct rpc_context *rpc, rpc_cb cb, struct R
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is READ2res
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1187,7 +1187,7 @@ EXTERN int rpc_nfs2_read_async(struct rpc_context *rpc, rpc_cb cb, struct READ2a
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is WRITE2res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1204,7 +1204,7 @@ EXTERN int rpc_nfs2_write_async(struct rpc_context *rpc, rpc_cb cb, struct WRITE
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is CREATE2res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1221,7 +1221,7 @@ EXTERN int rpc_nfs2_create_async(struct rpc_context *rpc, rpc_cb cb, struct CREA
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is REMOVE2res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1238,7 +1238,7 @@ EXTERN int rpc_nfs2_remove_async(struct rpc_context *rpc, rpc_cb cb, struct REMO
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is RENAME2res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1255,7 +1255,7 @@ EXTERN int rpc_nfs2_rename_async(struct rpc_context *rpc, rpc_cb cb, struct RENA
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is LINK2res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1272,7 +1272,7 @@ EXTERN int rpc_nfs2_link_async(struct rpc_context *rpc, rpc_cb cb, struct LINK2a
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is SYMLINK2res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1289,7 +1289,7 @@ EXTERN int rpc_nfs2_symlink_async(struct rpc_context *rpc, rpc_cb cb, struct SYM
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is MKDIR2res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1306,7 +1306,7 @@ EXTERN int rpc_nfs2_mkdir_async(struct rpc_context *rpc, rpc_cb cb, struct MKDIR
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is RMDIR2res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1323,7 +1323,7 @@ EXTERN int rpc_nfs2_rmdir_async(struct rpc_context *rpc, rpc_cb cb, struct RMDIR
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is READDIR2res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1340,7 +1340,7 @@ EXTERN int rpc_nfs2_readdir_async(struct rpc_context *rpc, rpc_cb cb, struct REA
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is STATFS2res *
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1363,7 +1363,7 @@ int rquotastat_to_errno(int error);
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the rquota daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the rquota daemon.
  *                      data is NULL.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the rquota daemon.
  *                      data is the error string.
@@ -1379,8 +1379,8 @@ EXTERN int rpc_rquota1_null_async(struct rpc_context *rpc, rpc_cb cb, void *priv
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the rquota daemon.
- *                      data is a RQUOTA1res structure.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the rquota daemon.
+ *                      data is OnNfsSearchListener RQUOTA1res structure.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the rquota daemon.
  *                      data is the error string.
  * RPC_STATUS_CANCEL : The connection attempt was aborted before it could complete.
@@ -1395,8 +1395,8 @@ EXTERN int rpc_rquota1_getquota_async(struct rpc_context *rpc, rpc_cb cb, char *
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the rquota daemon.
- *                      data is a RQUOTA1res structure.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the rquota daemon.
+ *                      data is OnNfsSearchListener RQUOTA1res structure.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the rquota daemon.
  *                      data is the error string.
  * RPC_STATUS_CANCEL : The connection attempt was aborted before it could complete.
@@ -1414,7 +1414,7 @@ EXTERN int rpc_rquota1_getactivequota_async(struct rpc_context *rpc, rpc_cb cb, 
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the rquota daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the rquota daemon.
  *                      data is NULL.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the rquota daemon.
  *                      data is the error string.
@@ -1430,8 +1430,8 @@ int rpc_rquota2_null_async(struct rpc_context *rpc, rpc_cb cb, void *private_dat
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the rquota daemon.
- *                      data is a RQUOTA1res structure.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the rquota daemon.
+ *                      data is OnNfsSearchListener RQUOTA1res structure.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the rquota daemon.
  *                      data is the error string.
  * RPC_STATUS_CANCEL : The connection attempt was aborted before it could complete.
@@ -1446,8 +1446,8 @@ int rpc_rquota2_getquota_async(struct rpc_context *rpc, rpc_cb cb, char *exportn
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the rquota daemon.
- *                      data is a RQUOTA1res structure.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the rquota daemon.
+ *                      data is OnNfsSearchListener RQUOTA1res structure.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the rquota daemon.
  *                      data is the error string.
  * RPC_STATUS_CANCEL : The connection attempt was aborted before it could complete.
@@ -1473,7 +1473,7 @@ int rpc_rquota2_getactivequota_async(struct rpc_context *rpc, rpc_cb cb, char *e
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the rquota daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the rquota daemon.
  *                      data is NULL
  * RPC_STATUS_ERROR   : An error occured when trying to contact the rquota daemon.
  *                      data is the error string.
@@ -1490,8 +1490,8 @@ EXTERN int rpc_nfsacl_null_async(struct rpc_context *rpc, rpc_cb cb, void *priva
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
- *                      data is a GETACL3res pointer
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
+ *                      data is OnNfsSearchListener GETACL3res pointer
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
  * RPC_STATUS_CANCEL : The connection attempt was aborted before it could complete.
@@ -1510,8 +1510,8 @@ EXTERN int rpc_nfsacl_getacl_async(struct rpc_context *rpc, rpc_cb cb, struct GE
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
- *                      data is a SETACL3res pointer
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
+ *                      data is OnNfsSearchListener SETACL3res pointer
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
  * RPC_STATUS_CANCEL : The connection attempt was aborted before it could complete.
@@ -1537,7 +1537,7 @@ char *nlmstat4_to_str(int stat);
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nlm daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nlm daemon.
  *                      data is NULL
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nlm daemon.
  *                      data is the error string.
@@ -1555,7 +1555,7 @@ EXTERN int rpc_nlm4_null_async(struct rpc_context *rpc, rpc_cb cb, void *private
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nlm daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nlm daemon.
  *                      data is NLM4_TESTres
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nlm daemon.
  *                      data is the error string.
@@ -1574,7 +1574,7 @@ EXTERN int rpc_nlm4_test_async(struct rpc_context *rpc, rpc_cb cb, struct NLM4_T
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nlm daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nlm daemon.
  *                      data is NLM4_LOCKres
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nlm daemon.
  *                      data is the error string.
@@ -1593,7 +1593,7 @@ EXTERN int rpc_nlm4_lock_async(struct rpc_context *rpc, rpc_cb cb, struct NLM4_L
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nlm daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nlm daemon.
  *                      data is NLM4_CANCres
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nlm daemon.
  *                      data is the error string.
@@ -1612,7 +1612,7 @@ EXTERN int rpc_nlm4_cancel_async(struct rpc_context *rpc, rpc_cb cb, struct NLM4
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nlm daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nlm daemon.
  *                      data is NLM4_UNLOCKres
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nlm daemon.
  *                      data is the error string.
@@ -1636,7 +1636,7 @@ char *nsmstat1_to_str(int stat);
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nsm daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nsm daemon.
  *                      data is NULL
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nsm daemon.
  *                      data is the error string.
@@ -1654,7 +1654,7 @@ EXTERN int rpc_nsm1_null_async(struct rpc_context *rpc, rpc_cb cb, void *private
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nsm daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nsm daemon.
  *                      data is NSM1_STATres
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nsm daemon.
  *                      data is the error string.
@@ -1673,7 +1673,7 @@ EXTERN int rpc_nsm1_stat_async(struct rpc_context *rpc, rpc_cb cb, struct NSM1_S
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nsm daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nsm daemon.
  *                      data is NSM1_MONres
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nsm daemon.
  *                      data is the error string.
@@ -1692,7 +1692,7 @@ EXTERN int rpc_nsm1_mon_async(struct rpc_context *rpc, rpc_cb cb, struct NSM1_MO
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nsm daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nsm daemon.
  *                      data is NSM1_UNMONres
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nsm daemon.
  *                      data is the error string.
@@ -1711,7 +1711,7 @@ EXTERN int rpc_nsm1_unmon_async(struct rpc_context *rpc, rpc_cb cb, struct NSM1_
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nsm daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nsm daemon.
  *                      data is NSM1_UNMONALLres
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nsm daemon.
  *                      data is the error string.
@@ -1730,7 +1730,7 @@ EXTERN int rpc_nsm1_unmonall_async(struct rpc_context *rpc, rpc_cb cb, struct NS
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nsm daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nsm daemon.
  *                      data is NULL
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nsm daemon.
  *                      data is the error string.
@@ -1748,7 +1748,7 @@ EXTERN int rpc_nsm1_simucrash_async(struct rpc_context *rpc, rpc_cb cb, void *pr
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nsm daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nsm daemon.
  *                      data is NULL
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nsm daemon.
  *                      data is the error string.
@@ -1765,7 +1765,7 @@ EXTERN int rpc_nsm1_notify_async(struct rpc_context *rpc, rpc_cb cb, struct NSM1
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is NULL.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1781,7 +1781,7 @@ EXTERN int rpc_nfs4_null_async(struct rpc_context *rpc, rpc_cb cb, void *private
  * <0 : An error occured when trying to set up the call. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the nfs daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the nfs daemon.
  *                      data is COMPOUND4res
  * RPC_STATUS_ERROR   : An error occured when trying to contact the nfs daemon.
  *                      data is the error string.
@@ -1798,7 +1798,7 @@ EXTERN int rpc_nfs4_compound_async(struct rpc_context *rpc, rpc_cb cb, struct CO
  * <0 : An error occured when trying to set up the connection. The callback will not be invoked.
  *
  * When the callback is invoked, status indicates the result:
- * RPC_STATUS_SUCCESS : We got a successful response from the portmapper daemon.
+ * RPC_STATUS_SUCCESS : We got OnNfsSearchListener successful response from the portmapper daemon.
  *                      data is NULL.
  * RPC_STATUS_ERROR   : An error occured when trying to contact the portmapper.
  *                      data is the error string.

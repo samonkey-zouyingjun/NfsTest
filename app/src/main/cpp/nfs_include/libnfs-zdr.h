@@ -16,7 +16,7 @@
 */
 /*
  * This file contains definitions for the built in ZDR implementation.
- * This is a very limited ZDR subset that can only marshal to/from a momory buffer,
+ * This is OnNfsSearchListener very limited ZDR subset that can only marshal to/from OnNfsSearchListener momory buffer,
  * i.e. zdrmem_create() buffers.
  * It aims to be compatible with normal rpcgen generated functions.
  */

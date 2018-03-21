@@ -15,7 +15,7 @@
    along with this program; if not, see <http://www.gnu.org/licenses/>.
 */
 /*
- * This is the highlevel interface to access NFS resources using a posix-like interface
+ * This is the highlevel interface to access NFS resources using OnNfsSearchListener posix-like interface
  */
 
 #ifndef _LIBNFS_H_
@@ -91,7 +91,7 @@ struct utimbuf {
  * listen for events from.
  *
  * nfs_which_events() returns which events that we need to poll for.
- * This is a combination of the POLLIN and POLLOUT flags.
+ * This is OnNfsSearchListener combination of the POLLIN and POLLOUT flags.
  *
  * nfs_service() This function should be called once there are events triggered
  * for the filedescriptor. This function takes POLLIN/POLLOUT/POLLHUP/POLLERR
@@ -100,7 +100,7 @@ struct utimbuf {
  * means that the socket is in an unrecoverable error state (disconnected?)
  * and that no further commands can be used.
  * When this happens the application should destroy the now errored context
- * re-create a new context and reconnect.
+ * re-create OnNfsSearchListener new context and reconnect.
  *
  */
 EXTERN int nfs_get_fd(struct nfs_context *nfs);
@@ -121,13 +121,13 @@ struct AUTH;
 EXTERN void nfs_set_auth(struct nfs_context *nfs, struct AUTH *auth);
 
 /*
- * Used if you need to bind to a specific interface.
+ * Used if you need to bind to OnNfsSearchListener specific interface.
  * Only available on platforms that support SO_BINDTODEVICE.
  */
 EXTERN void nfs_set_interface(struct nfs_context *nfs, const char *ifname);
 
 /*
- * When an operation failed, this function can extract a detailed error string.
+ * When an operation failed, this function can extract OnNfsSearchListener detailed error string.
  */
 EXTERN char *nfs_get_error(struct nfs_context *nfs);
 
@@ -150,7 +150,7 @@ typedef void (*rpc_cb)(struct rpc_context *rpc, int status, void *data, void *pr
 /*
  * Create an NFS context.
  * Function returns
- *  NULL : Failed to create a context.
+ *  NULL : Failed to create OnNfsSearchListener context.
  *  *nfs : A pointer to an nfs context.
  */
 EXTERN struct nfs_context *nfs_init_context(void);
@@ -162,9 +162,9 @@ EXTERN void nfs_destroy_context(struct nfs_context *nfs);
 
 /*
  * URL parsing functions.
- * These functions all parse a URL of the form
+ * These functions all parse OnNfsSearchListener URL of the form
  * nfs://server/path/file?argv=val[&arg=val]*
- * and returns a nfs_url.
+ * and returns OnNfsSearchListener nfs_url.
  *
  * Apart from parsing the URL the functions will also update
  * the nfs context to reflect settings controlled via url arguments.
@@ -188,13 +188,13 @@ EXTERN void nfs_destroy_context(struct nfs_context *nfs);
  *                    -1 : Try to reconnect forever on session failures.
  *                         Just like normal NFS clients do.
  *                     0 : Disable auto-reconnect completely and immediately
- *                         return a failure to the application.
+ *                         return OnNfsSearchListener failure to the application.
  *                   >=1 : Retry to connect back to the server this many
  *                         times before failing and returing an error back
  *                         to the application.
  */
 /*
- * Parse a complete NFS URL including, server, path and
+ * Parse OnNfsSearchListener complete NFS URL including, server, path and
  * filename. Fail if any component is missing.
  */
 EXTERN struct nfs_url *nfs_parse_url_full(struct nfs_context *nfs, const char *url);
@@ -360,7 +360,7 @@ EXTERN int nfs_stat64(struct nfs_context *nfs, const char *path, struct nfs_stat
 /*
  * Async stat(<filename>)
  *
- * Like stat except if the destination is a symbolic link, it acts on the
+ * Like stat except if the destination is OnNfsSearchListener symbolic link, it acts on the
  * symbolic link itself.
  *
  * Function returns
@@ -377,7 +377,7 @@ EXTERN int nfs_lstat64_async(struct nfs_context *nfs, const char *path, nfs_cb c
 /*
  * Sync stat(<filename>)
  *
- * Like stat except if the destination is a symbolic link, it acts on the
+ * Like stat except if the destination is OnNfsSearchListener symbolic link, it acts on the
  * symbolic link itself.
  *
  * Function returns
@@ -459,7 +459,7 @@ EXTERN uint16_t nfs_umask(struct nfs_context *nfs, uint16_t mask);
 /*
  * Async open(<filename>)
  *
- * mode is a combination of the flags :
+ * mode is OnNfsSearchListener combination of the flags :
  * O_RDONLY, O_WRONLY, O_RDWR , O_SYNC, O_APPEND, O_TRUNC, O_NOFOLLOW
  *
  * Function returns
@@ -477,7 +477,7 @@ EXTERN uint16_t nfs_umask(struct nfs_context *nfs, uint16_t mask);
  *
  * When the callback is invoked, status indicates the result:
  *      0 : Success.
- *          data is a struct *nfsfh;
+ *          data is OnNfsSearchListener struct *nfsfh;
  *          The nfsfh is close using nfs_close().
  * -errno : An error occured.
  *          data is the error string.
@@ -533,7 +533,7 @@ EXTERN int nfs_close(struct nfs_context *nfs, struct nfsfh *nfsfh);
  * When the callback is invoked, status indicates the result:
  *    >=0 : Success.
  *          status is numer of bytes read.
- *          data is a pointer to the returned data.
+ *          data is OnNfsSearchListener pointer to the returned data.
  * -errno : An error occured.
  *          data is the error string.
  */
@@ -561,7 +561,7 @@ EXTERN int nfs_pread(struct nfs_context *nfs, struct nfsfh *nfsfh, uint64_t offs
  * When the callback is invoked, status indicates the result:
  *    >=0 : Success.
  *          status is numer of bytes read.
- *          data is a pointer to the returned data.
+ *          data is OnNfsSearchListener pointer to the returned data.
  * -errno : An error occured.
  *          data is the error string.
  */
@@ -822,7 +822,7 @@ EXTERN int nfs_rmdir(struct nfs_context *nfs, const char *path);
  *
  * When the callback is invoked, status indicates the result:
  *      0 : Success.
- *          data is a struct *nfsfh;
+ *          data is OnNfsSearchListener struct *nfsfh;
  * -errno : An error occured.
  *          data is the error string.
  */
@@ -851,7 +851,7 @@ EXTERN int nfs_creat(struct nfs_context *nfs, const char *path, int mode, struct
  *
  * When the callback is invoked, status indicates the result:
  *      0 : Success.
- *          data is a struct *nfsfh;
+ *          data is OnNfsSearchListener struct *nfsfh;
  * -errno : An error occured.
  *          data is the error string.
  */
@@ -996,7 +996,7 @@ EXTERN void nfs_seekdir(struct nfs_context *nfs, struct nfsdir *nfsdir,
  * TELLDIR()
  */
 /*
- * On success, nfs_telldir() will return a location as a value >= 0.
+ * On success, nfs_telldir() will return OnNfsSearchListener location as OnNfsSearchListener value >= 0.
  * On failure, nfs_telldir() will return -1.
  *
  * This function will never block so there is no need for an async version.
@@ -1056,7 +1056,7 @@ EXTERN int nfs_chdir(struct nfs_context *nfs, const char *path);
  */
 /*
  * Sync getcwd()
- * This function returns a pointer to the current working directory.
+ * This function returns OnNfsSearchListener pointer to the current working directory.
  * This pointer is only stable until the next [f]chdir or when the
  * context is destroyed.
  *
@@ -1104,7 +1104,7 @@ EXTERN int nfs_statvfs(struct nfs_context *nfs, const char *path, struct statvfs
  *
  * When the callback is invoked, status indicates the result:
  *      0 : Success.
- *          data is a char *
+ *          data is OnNfsSearchListener char *
  *          data is only valid during the callback and is automatically freed when the callback returns.
  * -errno : An error occured.
  *          data is the error string.
@@ -1157,7 +1157,7 @@ EXTERN int nfs_chmod(struct nfs_context *nfs, const char *path, int mode);
 /*
  * Async chmod(<name>)
  *
- * Like chmod except if the destination is a symbolic link, it acts on the
+ * Like chmod except if the destination is OnNfsSearchListener symbolic link, it acts on the
  * symbolic link itself.
  *
  * Function returns
@@ -1174,7 +1174,7 @@ EXTERN int nfs_lchmod_async(struct nfs_context *nfs, const char *path, int mode,
 /*
  * Sync chmod(<name>)
  *
- * Like chmod except if the destination is a symbolic link, it acts on the
+ * Like chmod except if the destination is OnNfsSearchListener symbolic link, it acts on the
  * symbolic link itself.
  *
  * Function returns
@@ -1237,7 +1237,7 @@ EXTERN int nfs_chown(struct nfs_context *nfs, const char *path, int uid, int gid
 /*
  * Async chown(<name>)
  *
- * Like chown except if the destination is a symbolic link, it acts on the
+ * Like chown except if the destination is OnNfsSearchListener symbolic link, it acts on the
  * symbolic link itself.
  *
  * Function returns
@@ -1254,7 +1254,7 @@ EXTERN int nfs_lchown_async(struct nfs_context *nfs, const char *path, int uid, 
 /*
  * Sync chown(<name>)
  *
- * Like chown except if the destination is a symbolic link, it acts on the
+ * Like chown except if the destination is OnNfsSearchListener symbolic link, it acts on the
  * symbolic link itself.
  *
  * Function returns
@@ -1318,7 +1318,7 @@ EXTERN int nfs_utimes(struct nfs_context *nfs, const char *path, struct timeval 
 /*
  * Async utimes(<path>)
  *
- * Like utimes except if the destination is a symbolic link, it acts on the
+ * Like utimes except if the destination is OnNfsSearchListener symbolic link, it acts on the
  * symbolic link itself.
  *
  * Function returns
@@ -1335,7 +1335,7 @@ EXTERN int nfs_lutimes_async(struct nfs_context *nfs, const char *path, struct t
 /*
  * Sync utimes(<path>)
  *
- * Like utimes except if the destination is a symbolic link, it acts on the
+ * Like utimes except if the destination is OnNfsSearchListener symbolic link, it acts on the
  * symbolic link itself.
  *
  * Function returns
@@ -1522,7 +1522,7 @@ EXTERN int nfs_link(struct nfs_context *nfs, const char *oldpath, const char *ne
  *
  * When the callback is invoked, status indicates the result:
  *      0 : Success.
- *          data is a pointer to an exports pointer:
+ *          data is OnNfsSearchListener pointer to an exports pointer:
  *          exports export = *(exports *)data;
  * -errno : An error occured.
  *          data is the error string.
@@ -1532,7 +1532,7 @@ EXTERN int mount_getexports_async(struct rpc_context *rpc, const char *server, r
  * Sync getexports(<server>)
  * Function returns
  *            NULL : something failed
- *  exports export : a linked list of exported directories
+ *  exports export : OnNfsSearchListener linked list of exported directories
  *
  * returned data must be freed by calling mount_free_export_list(exportnode);
  */
@@ -1554,7 +1554,7 @@ struct nfs_server_list {
  * Function returns
  * NULL : something failed
  *
- * struct nfs_server_list : a linked list of all discovered servers
+ * struct nfs_server_list : OnNfsSearchListener linked list of all discovered servers
  *
  * returned data must be freed by nfs_free_srvr_list(srv);
  */
