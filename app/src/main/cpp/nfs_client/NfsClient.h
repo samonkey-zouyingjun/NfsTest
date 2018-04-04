@@ -5,17 +5,14 @@
 #ifndef NFS_NFSCLIENT_H
 #define NFS_NFSCLIENT_H
 
-#include "nfs_include/libnfs.h"
+#include <sys/types.h>
+#include "nfsc/libnfs.h"
+#include<fcntl.h>
 
 namespace NfsClient {
     class NfsClient {
     public:
-        /**
-         * nfs_find_local_servers
-         */
-        void getService();
-
-        ssize_t ReadFile(const int fd, void *buffer, const size_t maxlen);
+        int OpenFile(const char *url, const int flag, const mode_t mode);
     };
 }
 

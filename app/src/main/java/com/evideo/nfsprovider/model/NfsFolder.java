@@ -6,6 +6,10 @@ public class NfsFolder {
     private boolean isMounted = false;
     private String mountedPoint = "";
 
+    public NfsFolder(){
+
+    }
+
     public NfsFolder(String ip, String path) {
         this.ip = ip;
         this.folderPath = path;
@@ -37,5 +41,15 @@ public class NfsFolder {
     @Deprecated
     public void setMounted(boolean isMounted) {
         this.isMounted = isMounted;
+    }
+
+    @Override
+    public String toString() {
+        return "NfsFolder{" +
+                "folderPath='" + folderPath + '\'' +
+                ", ip='" + ip + '\'' +
+                ", isMounted=" + isMounted +
+                ", mountedPoint='" + mountedPoint + '\'' +
+                '}';
     }
 }
